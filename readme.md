@@ -1,3 +1,66 @@
+# Timing information
+* Our model is trained on two NVIDIA GeForce RTX 4090 GPUs for approximately 10h.
+* Ubuntu (22s.04)
+* Nvidia-smi version: 535.154.05
+* Driver Version: 535.154.05
+* Cuda version: 12.2.91
+# How to set up the env
+## install python 3.10
+```
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install python3.10
+sudo apt install python3.10-venv
+```
+## Using virtual env
+```
+pip install virtualenv
+virtualenv -p python3.10 myenv
+source comp9444_2/bin/activate
+```
+## install all package
+```
+pip install -r requirments.txt
+```
+## install cuda
+```
+wget https://developer.download.nvidia.com/compute/cuda/12.2.0/local_installers/cuda_12.2.0_535.54.03_linux.run
+sudo sh ./cuda_12.2.0_535.54.03_linux.run --toolkit --silent --override
+```
+# Open the vitural env
+```
+source comp9444_2/bin/activate
+```
+# How to download the train data
+## Style biedermeir:
+```
+gdown --folder https://drive.google.com/drive/folders/1kxXM1yA-vuFwiZR_T9n0g5KyCcmpwXxl
+```
+## Style ink_and_wash_painting: 
+```
+gdown --folder https://drive.google.com/drive/folders/1PSo_w7Y7V5HW5yj8TwLYZb74uilcL0Rh
+```
+## Style impressionism: 
+```
+gdown --folder https://drive.google.com/drive/folders/15r_gAL9foFcNuzqiZMKtdU2-miRDnCRd
+```
+## Style Contemporary Realism: 
+```
+gdown --folder https://drive.google.com/drive/folders/1LcxYkAqIGY93NTO8-cM--y3ugEwn4moU
+```
+## Train data: 
+```
+gdown https://drive.google.com/uc?id=1-v2UX6NF6a7A2xX9P4Azp5B1r3LQ4sQP/view?usp=sharing
+```
+# How to test
+```
+python test.py  --content_dir input/content/ --style_dir input/style/    --output out
+```
+# How to train the model
+```
+python train.py --style_dir ./datasets/Images/ --content_dir ./datasets/train2014 --save_dir models/ --batch_size 4
+```
+
 # StyTr^2 : Image Style Transfer with Transformers（CVPR2022）
 *Authors: [Yingying Deng](https://diyiiyiii.github.io/), Fan Tang, XingjiaPan, Weiming Dong, Chongyang Ma, Changsheng Xu*
 
